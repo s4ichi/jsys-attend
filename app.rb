@@ -4,15 +4,15 @@ module Ruboty
     class Pong < Base
       
       on(
-        /pong\z/i,                        
-        name: "ping",                     
+        /pong\z/i,
+        name: "ping",
         description: "Return PONG to PING"
       )
 
       def ping(message)
-        @reps ||= []
-        @reps << "ping"
-        message.reply(reps.join(","))
+        table[:pong] ||= ""
+        table[:pong] += "ping"
+        message.reply(table[:pong])
       end
     end
   end
