@@ -9,7 +9,7 @@ module Ruboty
       )
 
       def ping(message)
-        message.reply("pong")
+        message.reply("ping")
       end
     end
   end
