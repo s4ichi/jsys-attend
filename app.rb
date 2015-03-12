@@ -48,8 +48,7 @@ module Ruboty
       )
 
       def test(message)
-        sanitize_message_body(message)
-        message.reply(message)
+        message.reply(message[:from])
       end
 
       def new_attend(message)
