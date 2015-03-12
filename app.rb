@@ -128,7 +128,7 @@ module Ruboty
           return "Ch.#{current_ch}は存在しないよっ！"
         end
         
-        attend_table[current_ch].merge({ message.from_name => state })
+        attend_table[current_ch].merge!({ message.from_name => state })
         "#{attend_ch[current_ch]}に#{ROLE[state]}っ！"
       end
 
