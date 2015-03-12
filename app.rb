@@ -135,7 +135,7 @@ module Ruboty
           attend_counter += 1 if val == :attend
         end
         
-        ret_message + "出席人数: #{attend_counter}")
+        ret_message + "出席人数: #{attend_counter}"
       end
       
       def attend_table
