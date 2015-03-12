@@ -93,7 +93,7 @@ module Ruboty
       
       def attend_user(message)
         begin
-          message.reply(divide_user(:attend), message)
+          message.reply(divide_user(:attend, message))
         rescue => e
           message.reply(e.message)
         end
@@ -135,7 +135,7 @@ module Ruboty
           attend_counter += 1 if val == :attend
         end
         
-        ret_message + "出席人数: #{attend_counter}, 欠席(未回答)人数: #{attend_table[current_ch].length - attend_counter}"
+        ret_message + "出席人数: #{attend_counter}")
       end
       
       def attend_table
