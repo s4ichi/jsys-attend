@@ -47,6 +47,12 @@ module Ruboty
         description: "absent target groups"
       )
 
+      on(
+        /闇の炎に抱かれて消えるがいい\z/,
+        name: "clear_all",
+        description: "危険"
+      )
+
       def new_attend(message)
         begin 
           new_ch_num = create_new_ch
@@ -107,6 +113,11 @@ module Ruboty
         end
       end
 
+      def clear_all(message)
+        robot.brain.data[NAMESPACE + "_table"] = {}
+        robot.brain.data[NAMESPACE + "_ch"] = {}
+      end
+      
       private
       def divide_user(state, messgae)
         current_ch = message[:ch]
