@@ -95,7 +95,7 @@ module Ruboty
         begin
           message.reply(divide_user(:attend), message)
         rescue => e
-          message.reply("エラーっぽいっ!")
+          message.reply(e.message)
         end
       end
 
@@ -103,7 +103,7 @@ module Ruboty
         begin
           message.reply(divide_user(:absent, message))
         rescue => e
-          message.reply("エラーっぽいっ!")
+          message.reply(e.message)
         end
       end
 
@@ -124,7 +124,7 @@ module Ruboty
       end
 
       def current_message(current_ch)
-        if ch_exist?(current_hch)
+        if ch_exist?(current_ch)
           message.reply("Ch.#{group_num}は存在しないよっ！")
         end
 
