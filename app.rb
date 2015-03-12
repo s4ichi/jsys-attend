@@ -6,13 +6,13 @@ module Ruboty
       ROLE = { attend: "出席", absent: "欠席" }
 
       on(
-        /test (?<schedule>)/i,
+        /test (?<from>.+?)\z/,
         name: "test",
         description: "Return PONG to PING"
       )
       
       on(
-        /出席 (?<schedule>)/i,
+        /出席/i,
         name: "new_attend",
         description: "Return PONG to PING"
       )
@@ -48,6 +48,7 @@ module Ruboty
       )
 
       def test(message)
+        sanitize_message_body(message)
         message.reply(message)
       end
 
@@ -154,7 +155,7 @@ module Ruboty
       end
 
       def sanitize_message_body(message)
-
+        message.body.slice!("@attendbot: ")
       end
     end
   end
