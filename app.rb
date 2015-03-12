@@ -6,13 +6,13 @@ module Ruboty
       ROLE = { attend: "出席", absent: "欠席" }
 
       on(
-        /test/i,
+        /test (?<schedule>)/i,
         name: "test",
         description: "Return PONG to PING"
       )
       
       on(
-        /出席/i,
+        /出席 (?<schedule>)/i,
         name: "new_attend",
         description: "Return PONG to PING"
       )
