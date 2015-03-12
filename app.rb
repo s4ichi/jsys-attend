@@ -4,6 +4,11 @@ module Ruboty
     class Attend < Base
       NAMESPACE = "attend"
       ROLE = { attend: "出席", absent: "欠席" }
+
+      on(
+        /test/i,
+        name: "test",
+        description: "Return PONG to PING"
       
       on(
         /出席/i,
@@ -41,11 +46,15 @@ module Ruboty
         description: "absent target groups"
       )
 
+      def test(message)
+        message.reply(message)
+      end
+
       def new_attend(message)
         begin 
           new_ch_num = create_new_ch
           attend_table[new_ch_num] = {}
-          attend_ch[new_ch_num] = message[2..(message.body.length)].strip
+          attend_ch[new_ch_num] = message[2..(message.length)].strip
           message.reply("新規出席Chを設立しました！\n Ch.No. -> #{new_ch_num}, Detail -> #{attend_ch[new_ch_num]}")
         rescue => e
           message.reply(e.message)
