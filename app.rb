@@ -48,7 +48,7 @@ module Ruboty
       )
 
       on(
-        /闇の炎に抱かれて消えるがいい\z/,
+        /闇の炎に抱かれて消えろ\z/,
         name: "clear_all",
         description: "危険"
       )
@@ -116,6 +116,7 @@ module Ruboty
       def clear_all(message)
         robot.brain.data[NAMESPACE + "_table"] = {}
         robot.brain.data[NAMESPACE + "_ch"] = {}
+        message.reply("ダークフレイムマスター！！！！！！！！！")
       end
       
       private
@@ -146,7 +147,7 @@ module Ruboty
           attend_counter += 1 if val == :attend
         end
         
-        ret_message + "出席人数: #{attend_counter}"
+        ret_message + "出席人数: #{attend_counter}\n"
       end
       
       def attend_table
