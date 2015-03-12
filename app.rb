@@ -9,6 +9,7 @@ module Ruboty
         /test/i,
         name: "test",
         description: "Return PONG to PING"
+      )
       
       on(
         /出席/i,
