@@ -138,7 +138,7 @@ module Ruboty
 
       def current_message(current_ch)
         if ch_exist?(current_ch)
-          "Ch.#{group_num}は存在しないよっ！"
+          "Ch.#{current_ch}は存在しないよっ！"
         end
 
         attend_counter = 0
