@@ -45,7 +45,7 @@ module Ruboty
         begin 
           new_ch_num = create_new_ch
           attend_table[new_ch_num] = {}
-          attend_ch[new_ch_num] = message.body[2..(message.body.length)].strip
+          attend_ch[new_ch_num] = message[2..(message.body.length)].strip
           message.reply("新規出席Chを設立しました！\n Ch.No. -> #{new_ch_num}, Detail -> #{attend_ch[new_ch_num]}")
         rescue => e
           message.reply(e.message)
@@ -141,6 +141,10 @@ module Ruboty
 
       def create_new_ch
         (1..100).to_a.select {|num| !attend_ch.keys.include?(num)}.first
+      end
+
+      def sanitize_message_body(message)
+
       end
     end
   end
