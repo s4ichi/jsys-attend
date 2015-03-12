@@ -6,56 +6,52 @@ module Ruboty
       ROLE = { attend: "出席", absent: "欠席" }
 
       on(
-        /test (?<from>(\d)+?)\z/,
+        /test (?<ch>(\d)+?)\z/,
         name: "test",
         description: "Return PONG to PING"
       )
       
       on(
-        /出席 (?<from>.+?)/i,
+        /出席 (?<desc>.+?)/,
         name: "new_attend",
         description: "Return PONG to PING"
       )
 
       on(
-        /状態\s?(\d){1,}/i,
+        /状態 (?<ch>(\d)+?)\z/,
         name: "current_state",
         description: "Return PONG to PING"
       )
       
       on(
-        /締切\s?(,?(\d){1,})+/i,
+        /締切 (?<ch>(\d)+?)\z/,
         name: "end_attend",
         description: "Return PONG to PING"
       )
 
       on(
-        /一覧/i,
+        /一覧\z/i,
         name: "dash_board",
         description: "Return PONG to PING"
       )
 
       on(
-        /出\s?(,?(\d){1,})+/i,
+        /出 (?<ch>(\d)+?)\z/,
         name: "attend_user",
         description: "attend target groups"
       )
 
       on(
-        /欠\s?(,?(\d){1,})+/i,
+        /欠 (?<ch>(\d)+?)\z/,
         name: "absent_user",
         description: "absent target groups"
       )
-
-      def test(message)
-        message.reply(message[:from])
-      end
 
       def new_attend(message)
         begin 
           new_ch_num = create_new_ch
           attend_table[new_ch_num] = {}
-          attend_ch[new_ch_num] = message[2..(message.length)].strip
+          attend_ch[new_ch_num] = message[:desc]
           message.reply("新規出席Chを設立しました！\n Ch.No. -> #{new_ch_num}, Detail -> #{attend_ch[new_ch_num]}")
         rescue => e
           message.reply(e.message)
@@ -64,7 +60,7 @@ module Ruboty
 
       def current_state(message)
         begin 
-          current_ch = message.body.to_i
+          current_ch = message[:ch].to_i
           message.reply(current_message(current_ch))
         rescue => e
           message.reply(e.message)
@@ -73,8 +69,8 @@ module Ruboty
 
       def end_attend(message)
         begin 
-          current_ch = message.to_i
-          result_message = current_messag(current_ch)
+          current_ch = message[:ch].to_i
+          result_message = current_message(current_ch)
           attend_table[current_ch] = nil
           attend_ch[current_ch] = nil
           message.reply(result_message)
@@ -97,7 +93,7 @@ module Ruboty
       
       def attend_user(message)
         begin
-          message.reply(divide_user(:attend))
+          message.reply(divide_user(:attend), message)
         rescue => e
           message.reply("エラーっぽいっ!")
         end
@@ -105,23 +101,22 @@ module Ruboty
 
       def absent_user(message)
         begin
-          message.reply(divide_user(:absent))
+          message.reply(divide_user(:absent, message))
         rescue => e
           message.reply("エラーっぽいっ!")
         end
       end
 
       private
-      def divide_user(state)
-        groups = message.body.split(",").map! {|hoge| hoge.to_i}.compact
-        groups.each do |group_num|
-          if ch_exist?(group_num)
-            return "Ch.#{group_num}は存在しないよっ！"
-          end
-
-          attend_table[group_num].merge({ message.from_name => state })
+      def divide_user(state, messgae)
+        current_ch = message[:ch]
+        
+        if ch_exist?(current_ch)
+          return "Ch.#{current_ch}は存在しないよっ！"
         end
-        groups.join(",") + "に#{ROLE[state]}っ！"
+        
+        attend_table[current_ch].merge({ message.from_name => state })
+        "#{attend_ch[current_ch]}に#{ROLE[state]}っ！"
       end
 
       def ch_exist?(ch_num)
@@ -133,12 +128,14 @@ module Ruboty
           message.reply("Ch.#{group_num}は存在しないよっ！")
         end
 
+        attend_counter = 0
         ret_message = "[Ch.#{current_ch}, #{attend_ch[current_ch]}]\n"
         attend_table[current_ch].each do |key, val|
           ret_message += "#{key.to_s}: #{ROLE[val]}\n"
+          attend_counter += 1 if val == :attend
         end
         
-        ret_message
+        ret_message + "出席人数: #{attend_counter}, 欠席(未回答)人数: #{attend_table[current_ch].length - attend_counter}"
       end
       
       def attend_table
