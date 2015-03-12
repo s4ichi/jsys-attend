@@ -120,7 +120,8 @@ module Ruboty
       end
       
       private
-      def divide_user(state, messgae)
+
+      def divide_user(state, message)
         current_ch = message[:ch]
         
         if ch_exist?(current_ch)
