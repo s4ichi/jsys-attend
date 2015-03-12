@@ -77,8 +77,8 @@ module Ruboty
         begin 
           current_ch = message[:ch].to_i
           result_message = current_message(current_ch)
-          attend_table[current_ch] = nil
-          attend_ch[current_ch] = nil
+          attend_table.delete(current_ch)
+          attend_ch.delete(current_ch)
           message.reply(result_message)
         rescue => e
           message.reply(e.message)
