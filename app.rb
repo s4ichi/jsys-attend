@@ -6,7 +6,7 @@ module Ruboty
       ROLE = { attend: "出席", absent: "欠席" }
       
       on(
-        /^出席/i,
+        /出席/i,
         name: "new_attend",
         description: "Return PONG to PING"
       )
@@ -18,13 +18,13 @@ module Ruboty
       )
       
       on(
-        /^締切\s?(,?(\d){1,})+/i,
+        /締切\s?(,?(\d){1,})+/i,
         name: "end_attend",
         description: "Return PONG to PING"
       )
 
       on(
-        /^一覧/i,
+        /一覧/i,
         name: "dash_board",
         description: "Return PONG to PING"
       )
