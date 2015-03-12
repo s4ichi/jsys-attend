@@ -12,7 +12,7 @@ module Ruboty
       )
       
       on(
-        /出席 (?<desc>.+?)/,
+        /出席 (?<desc>.+?)\z/,
         name: "new_attend",
         description: "Return PONG to PING"
       )
