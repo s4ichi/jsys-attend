@@ -62,3 +62,8 @@ attendちゃんは作成が成功するとチャンネルの番号を返して�
 ## 会話
 docomo APIを使用して適当な会話ができます。  
 アットマーク(@)付きで話しかけてみてね。
+
+
+## 天気
+日本各地の天気を教えてくれます。
+![天気.png](https://raw.github.com/wiki/everysick/jsys-attend/images/attend-7.png)
