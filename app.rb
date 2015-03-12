@@ -6,12 +6,6 @@ module Ruboty
       ROLE = { attend: "出席", absent: "欠席" }
 
       on(
-        /test (?<ch>(\d)+?)\z/,
-        name: "test",
-        description: "Return PONG to PING"
-      )
-      
-      on(
         /出席 (?<desc>.+?)\z/,
         name: "new_attend",
         description: "Return PONG to PING"
