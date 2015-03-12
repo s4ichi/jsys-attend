@@ -122,7 +122,7 @@ module Ruboty
       private
 
       def divide_user(state, message)
-        current_ch = message[:ch]
+        current_ch = message[:ch].to_i
         
         if ch_exist?(current_ch)
           return "Ch.#{current_ch}は存在しないよっ！"
