@@ -42,33 +42,49 @@ module Ruboty
       )
 
       def new_attend(message)
-        new_ch_num = create_new_ch
-        attend_table[new_ch_num] = {}
-        attend_ch[new_ch_num] = message.body[2..(message.body.length)].strip
-        message.reply("新規出席Chを設立しました！\n Ch.No. -> #{new_ch_num}, Detail -> #{attend_ch[new_ch_num]}")
+        begin 
+          new_ch_num = create_new_ch
+          attend_table[new_ch_num] = {}
+          attend_ch[new_ch_num] = message.body[2..(message.body.length)].strip
+          message.reply("新規出席Chを設立しました！\n Ch.No. -> #{new_ch_num}, Detail -> #{attend_ch[new_ch_num]}")
+        rescue => e
+          message.reply(e.message)
+        end
       end
 
       def current_state(message)
-        current_ch = message.body.to_i
-        message.reply(current_message(current_ch))
+        begin 
+          current_ch = message.body.to_i
+          message.reply(current_message(current_ch))
+        rescue => e
+          message.reply(e.message)
+        end
       end
 
       def end_attend(message)
-        current_ch = message.to_i
-        result_message = current_messag(current_ch)
-        attend_table[current_ch] = nil
-        attend_ch[current_ch] = nil
-        message.reply(result_message)
+        begin 
+          current_ch = message.to_i
+          result_message = current_messag(current_ch)
+          attend_table[current_ch] = nil
+          attend_ch[current_ch] = nil
+          message.reply(result_message)
+        rescue => e
+          message.reply(e.message)
+        end
       end
 
       def dash_board(message)
-        result_message = "Ch毎の出席一覧だよ！\n"
-        attend_ch.keys.each do |ch_num|
-          result_message += current_message(ch_num)
+        begin
+          result_message = "Ch毎の出席一覧だよ！\n"
+          attend_ch.keys.each do |ch_num|
+            result_message += current_message(ch_num)
+          end
+          message.reply(result_message)
+        rescue => e
+          message.reply(e.message)
         end
-        message.reply(result_message)
       end
-     
+      
       def attend_user(message)
         begin
           message.reply(divide_user(:attend))
