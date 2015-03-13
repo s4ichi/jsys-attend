@@ -24,7 +24,7 @@ module Ruboty
       )
 
       on(
-        /\A一覧\z/i,
+        /\A一覧\z/,
         name: "dash_board",
         description: "Return PONG to PING"
       )
