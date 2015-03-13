@@ -6,37 +6,37 @@ module Ruboty
       ROLE = { attend: "出席", absent: "欠席" }
 
       on(
-        /出席 (?<desc>.+?)\z/,
+        /\A出席\s?(?<desc>.+?)\z/,
         name: "new_attend",
         description: "Return PONG to PING"
       )
 
       on(
-        /状態 (?<ch>(\d)+?)\z/,
+        /\A状態\s?(?<ch>(\d)+?)\z/,
         name: "current_state",
         description: "Return PONG to PING"
       )
       
       on(
-        /締切 (?<ch>(\d)+?)\z/,
+        /\A締切\s?(?<ch>(\d)+?)\z/,
         name: "end_attend",
         description: "Return PONG to PING"
       )
 
       on(
-        /一覧\z/i,
+        /\A一覧\z/i,
         name: "dash_board",
         description: "Return PONG to PING"
       )
 
       on(
-        /出 (?<ch>(\d)+?)\z/,
+        /\A出\s?(?<ch>(\d)+?)\z/,
         name: "attend_user",
         description: "attend target groups"
       )
 
       on(
-        /欠 (?<ch>(\d)+?)\z/,
+        /\A欠\s?(?<ch>(\d)+?)\z/,
         name: "absent_user",
         description: "absent target groups"
       )
