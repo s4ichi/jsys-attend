@@ -9,3 +9,7 @@ gem "ruboty-redis"
 gem "ruboty-slack"
 gem "ruboty-talk"
 gem 'ruboty-japan_weather'
+
+
+# test
+gem "rspec"
