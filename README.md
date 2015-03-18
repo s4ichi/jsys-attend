@@ -1,4 +1,5 @@
 # JSYS ATTEND
+[![Circle CI](https://circleci.com/gh/Everysick/jsys-attend/tree/master.svg?style=svg)](https://circleci.com/gh/Everysick/jsys-attend/tree/master)  
 jsys slack botです。  
 主に情報システム局のSlack内で各種出席を取ります。  
 愛嬌あるのでかわいがってあげてください。
