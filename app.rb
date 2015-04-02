@@ -4,6 +4,7 @@ module Ruboty
     class Attend < Base
       NAMESPACE = "attend"
       ROLE = { attend: "出席", absent: "欠席" }
+      ADMIN = []
 
       on(
         /出席\s?(?<desc>.+?)\z/,
@@ -108,9 +109,13 @@ module Ruboty
       end
 
       def clear_all(message)
-        robot.brain.data[NAMESPACE + "_table"] = {}
-        robot.brain.data[NAMESPACE + "_ch"] = {}
-        message.reply("ダークフレイムマスター！！！！！！！！！")
+        if ADMIN.index(message.from_name).nil?
+          message.reply('君に権限はないよ！')
+        else
+          robot.brain.data[NAMESPACE + "_table"] = {}
+          robot.brain.data[NAMESPACE + "_ch"] = {}
+          message.reply("ダークフレイムマスター！！！！！！！！！")
+        end
       end
       
       private
