@@ -4,41 +4,42 @@ module Ruboty
     class Attend < Base
       NAMESPACE = "attend"
       ROLE = { attend: "出席", absent: "欠席" }
+      ADMIN = []
 
       on(
         /出席\s?(?<desc>.+?)\z/,
         name: "new_attend",
-        description: "Return PONG to PING"
+        description: "新たに出席をとります"
       )
 
       on(
         /状態\s?(?<ch>(\d)+?)\z/,
         name: "current_state",
-        description: "Return PONG to PING"
+        description: "指定したChの出席状況を確認します"
       )
       
       on(
         /締切\s?(?<ch>(\d)+?)\z/,
         name: "end_attend",
-        description: "Return PONG to PING"
+        description: "指定したChの出席受付を締め切ります"
       )
 
       on(
         /一覧\z/,
         name: "dash_board",
-        description: "Return PONG to PING"
+        description: "Chごとの出席状況を確認します"
       )
 
       on(
         /出\s?(?<ch>(\d)+?)\z/,
         name: "attend_user",
-        description: "attend target groups"
+        description: "指定したChに出席します"
       )
 
       on(
         /欠\s?(?<ch>(\d)+?)\z/,
         name: "absent_user",
-        description: "absent target groups"
+        description: "指定したChに欠席します"
       )
 
       on(
@@ -108,9 +109,13 @@ module Ruboty
       end
 
       def clear_all(message)
-        robot.brain.data[NAMESPACE + "_table"] = {}
-        robot.brain.data[NAMESPACE + "_ch"] = {}
-        message.reply("ダークフレイムマスター！！！！！！！！！")
+        if ADMIN.index(message.from_name).nil?
+          message.reply('君に権限はないよ！')
+        else
+          robot.brain.data[NAMESPACE + "_table"] = {}
+          robot.brain.data[NAMESPACE + "_ch"] = {}
+          message.reply("ダークフレイムマスター！！！！！！！！！")
+        end
       end
       
       private
