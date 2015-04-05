@@ -66,6 +66,10 @@ GEM
     ruboty-japan_weather (0.0.4)
       ruboty
       weather_jp
+    ruboty-lgtm (0.0.3)
+      faraday
+      faraday_middleware
+      ruboty
     ruboty-nyan_nyan (0.0.1)
       ruboty
     ruboty-redis (0.0.5)
@@ -101,6 +105,7 @@ DEPENDENCIES
   ruboty-cron
   ruboty-google_image
   ruboty-japan_weather
+  ruboty-lgtm
   ruboty-nyan_nyan
   ruboty-redis
   ruboty-slack
