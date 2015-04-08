@@ -9,7 +9,6 @@ gem "ruboty-redis"
 gem "ruboty-slack"
 gem "ruboty-talk"
 gem 'ruboty-japan_weather'
-gem 'ruboty-nyan_nyan'
 gem 'ruboty-lgtm'
 
 # test

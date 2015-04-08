@@ -70,8 +70,6 @@ GEM
       faraday
       faraday_middleware
       ruboty
-    ruboty-nyan_nyan (0.0.1)
-      ruboty
     ruboty-redis (0.0.5)
       redis
       redis-namespace
@@ -106,7 +104,6 @@ DEPENDENCIES
   ruboty-google_image
   ruboty-japan_weather
   ruboty-lgtm
-  ruboty-nyan_nyan
   ruboty-redis
   ruboty-slack
   ruboty-talk
