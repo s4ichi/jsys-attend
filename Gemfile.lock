@@ -59,6 +59,8 @@ GEM
       activesupport
       chrono
       ruboty (>= 0.2.0)
+    ruboty-dajare (1.0.0)
+      ruboty
     ruboty-google_image (0.0.7)
       faraday
       faraday_middleware
@@ -101,6 +103,7 @@ DEPENDENCIES
   ruboty
   ruboty-alias
   ruboty-cron
+  ruboty-dajare
   ruboty-google_image
   ruboty-japan_weather
   ruboty-lgtm

@@ -10,6 +10,7 @@ gem "ruboty-slack"
 gem "ruboty-talk"
 gem 'ruboty-japan_weather'
 gem 'ruboty-lgtm'
+gem 'ruboty-dajare'
 
 # test
 gem "rspec"
