@@ -22,7 +22,10 @@
       "description": "Timezone.",
       "value": "Asia/Tokyo"
     }
+    "DOCOMO_API_KEY": {
+      "description": "Please type docomo api key."
+    }
   },
   "keywords": ["chatops"],
-  "name": "Ruboty"
+  "name": "ruboty-bot"
 }
