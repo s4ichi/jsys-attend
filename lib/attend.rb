@@ -48,6 +48,12 @@ module Ruboty
         description: "危険"
       )
 
+      on(
+        /状態\sサイコロ\z/,
+        name: "random_attend",
+        description: "迷ったらコレ！"
+      )
+
       def new_attend(message)
         begin 
           new_ch_num = create_new_ch
@@ -116,6 +122,10 @@ module Ruboty
           robot.brain.data[NAMESPACE + "_ch"] = {}
           message.reply("ダークフレイムマスター！！！！！！！！！")
         end
+      end
+
+      def random_attend
+        message.reply(["出席", "欠席"].shuffle.first + "しましょう！")
       end
       
       private
