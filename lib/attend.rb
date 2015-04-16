@@ -48,11 +48,11 @@ module Ruboty
         description: "危険"
       )
 
-#      on(
-#        /出欠\s?サイコロ\z/,
-#        name: "random_attend",
-#        description: "迷ったらコレ！"
-#      )
+      on(
+        /出欠\s?サイコロ\z/,
+        name: "random_attend",
+        description: "迷ったらコレ！"
+      )
 
       def new_attend(message)
         begin 
@@ -124,9 +124,9 @@ module Ruboty
         end
       end
 
- #     def random_attend(message)
- #       message.reply(["出席", "欠席"].shuffle.first + "しましょう！")
- #     end
+      def random_attend(message)
+        message.reply(["出席", "欠席"].shuffle.first + "しましょう！")
+      end
       
       private
 
