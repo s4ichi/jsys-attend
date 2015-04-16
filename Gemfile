@@ -11,7 +11,6 @@ gem "ruboty-talk"
 gem 'ruboty-japan_weather'
 gem 'ruboty-lgtm'
 gem 'ruboty-dajare'
-gem 'ruboty-shinchoku'
 
 # test
 gem "rspec"
