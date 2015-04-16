@@ -49,7 +49,7 @@ module Ruboty
       )
 
       on(
-        /状態\sサイコロ\z/,
+        /出欠\s?サイコロ\z/,
         name: "random_attend",
         description: "迷ったらコレ！"
       )
@@ -124,7 +124,7 @@ module Ruboty
         end
       end
 
-      def random_attend
+      def random_attend(message)
         message.reply(["出席", "欠席"].shuffle.first + "しましょう！")
       end
       
