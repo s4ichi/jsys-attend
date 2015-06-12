@@ -135,14 +135,18 @@ module Ruboty
       end
 
       def imitate_attend
-        current_ch = message[:ch].to_i
+        begin
+          current_ch = message[:ch].to_i
 
-        if ch_exist?(current_ch)
-          return "Ch.#{current_ch}は存在しないよっ！"
+          if ch_exist?(current_ch)
+            return "Ch.#{current_ch}は存在しないよっ！"
+          end
+
+          imitate_user = attend_table[current_ch].sample.key
+          message.reply("#{imitate_user}の真似をしましょう！")
+        rescue => e
+          message.reply(e.message)
         end
-
-        imitate_user = attend_table[current_ch].sample.key
-        message.reply("#{imitate_user}の真似をしましょう！")
       end
 
       private
