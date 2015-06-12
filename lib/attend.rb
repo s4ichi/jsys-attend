@@ -142,7 +142,7 @@ module Ruboty
             return "Ch.#{current_ch}は存在しないよっ！"
           end
 
-          imitate_user = attend_table[current_ch].sample.key
+          imitate_user = attend_table[current_ch].keys.sample
           message.reply("#{imitate_user}の真似をしましょう！")
         rescue => e
           message.reply(e.message)
