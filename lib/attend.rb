@@ -134,7 +134,7 @@ module Ruboty
         message.reply(["出席", "欠席"].shuffle.first + "しましょう！")
       end
 
-      def imitate_attend
+      def imitate_attend(message)
         begin
           current_ch = message[:ch].to_i
 
