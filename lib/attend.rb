@@ -17,7 +17,7 @@ module Ruboty
         name: "current_state",
         description: "指定したChの出席状況を確認します"
       )
-      
+
       on(
         /締切\s?(?<ch>(\d)+?)\z/,
         name: "end_attend",
@@ -54,8 +54,14 @@ module Ruboty
         description: "迷ったらコレ！"
       )
 
+      on(
+        /出欠\s?マネマネ\s?(?<ch>(\d)+?)\z/,
+        name: "imitate_attend",
+        description: "自分で決められない奴は何をやってもダメ"
+      )
+
       def new_attend(message)
-        begin 
+        begin
           new_ch_num = create_new_ch
           attend_table[new_ch_num] = {}
           attend_ch[new_ch_num] = message[:desc]
@@ -66,7 +72,7 @@ module Ruboty
       end
 
       def current_state(message)
-        begin 
+        begin
           current_ch = message[:ch].to_i
           message.reply(current_message(current_ch))
         rescue => e
@@ -75,7 +81,7 @@ module Ruboty
       end
 
       def end_attend(message)
-        begin 
+        begin
           current_ch = message[:ch].to_i
           result_message = current_message(current_ch)
           attend_table.delete(current_ch)
@@ -97,7 +103,7 @@ module Ruboty
           message.reply(e.message)
         end
       end
-      
+
       def attend_user(message)
         begin
           message.reply(divide_user(:attend, message))
@@ -127,16 +133,27 @@ module Ruboty
       def random_attend(message)
         message.reply(["出席", "欠席"].shuffle.first + "しましょう！")
       end
-      
+
+      def imitate_attend
+        current_ch = message[:ch].to_i
+
+        if ch_exist?(current_ch)
+          return "Ch.#{current_ch}は存在しないよっ！"
+        end
+
+        imitate_user = attend_table[current_ch].sample.key
+        message.reply("#{imitate_user}の真似をしましょう！")
+      end
+
       private
 
       def divide_user(state, message)
         current_ch = message[:ch].to_i
-        
+
         if ch_exist?(current_ch)
           return "Ch.#{current_ch}は存在しないよっ！"
         end
-        
+
         attend_table[current_ch].merge!({ message.from_name => state })
         "#{attend_ch[current_ch]}に#{ROLE[state]}っ！"
       end
@@ -156,10 +173,10 @@ module Ruboty
           ret_message += "#{key.to_s}: #{ROLE[val]}\n"
           attend_counter += 1 if val == :attend
         end
-        
+
         ret_message + "出席人数: #{attend_counter}\n"
       end
-      
+
       def attend_table
         robot.brain.data[NAMESPACE + "_table"] ||= {}
       end
