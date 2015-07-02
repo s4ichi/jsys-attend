@@ -77,9 +77,9 @@ GEM
       redis
       redis-namespace
       ruboty
-    ruboty-slack (0.1.8)
+    ruboty-slack (0.1.10)
       ruboty (>= 1.0.4)
-      xrc (>= 0.1.7)
+      xrc (>= 0.1.8)
     ruboty-talk (0.0.5)
       docomoru (>= 0.0.3)
       ruboty (>= 1.1.0)
@@ -109,5 +109,5 @@ DEPENDENCIES
   ruboty-japan_weather
   ruboty-lgtm
   ruboty-redis
-  ruboty-slack (= 0.1.8)
+  ruboty-slack
   ruboty-talk
