@@ -1,4 +1,3 @@
-# coding: utf-8
 module Ruboty
   module Handlers
     class Attend < Base

@@ -14,3 +14,5 @@ gem 'ruboty-dajare'
 
 # test
 gem "rspec"
+gem "pry"
+gem "pry-doc"
