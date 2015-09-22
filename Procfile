@@ -1,1 +1,1 @@
-bot: bundle exec ruboty --load attend.rb
+bot: bundle exec ruboty --load app.rb
