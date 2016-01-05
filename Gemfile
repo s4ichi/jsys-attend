@@ -8,4 +8,8 @@ gem "ruboty-google_image"
 gem "ruboty-redis"
 gem "ruboty-slack"
 gem "ruboty-talk"
-gem 'ruboty-lgtm'
+gem "ruboty-lgtm"
+
+group :test do
+  gem "rspec"
+end
