@@ -21,7 +21,7 @@
     "TZ": {
       "description": "Timezone.",
       "value": "Asia/Tokyo"
-    }
+    },
     "DOCOMO_API_KEY": {
       "description": "Please type docomo api key."
     }
