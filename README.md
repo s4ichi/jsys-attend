@@ -1,6 +1,9 @@
 # JSYS ATTEND
 jsys slack botです。
 
+## Deploy
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ## 出席
 たぶんこれがこいつの生きる目的。各種コマンドで100程度のイベントに対して出席をとることが可能です。
 
