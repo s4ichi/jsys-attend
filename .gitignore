@@ -1,8 +1,6 @@
 Gemfile.lock
 
 .env
-.ruby-version
-.rspec
 
 .bundle/
 vendor/
