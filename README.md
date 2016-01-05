@@ -2,6 +2,9 @@
 jsys slack botです。
 
 ## Deploy
+以下のボタンからherokuにデプロイが可能です。
+なお、デプロイの際には素のrubotyに必要なKEY群に加えて[DOCOMO雑談対話API](https://dev.smt.docomo.ne.jp/?p=docs.api.page&api_name=dialogue&p_name=api_reference)が必要になります。
+予めAPIKEYを取得しておいてください。また、素のrubotyデプロイ方法は[ココ](https://github.com/r7kamura/ruboty-template)にあります。
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## 出席
